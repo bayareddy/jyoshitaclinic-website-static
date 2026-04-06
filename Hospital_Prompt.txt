@@ -1,0 +1,122 @@
+Act as a senior software architect and product designer.
+
+I am building a scalable, production-ready Multi-Hospital SaaS application (tenant-based system). The system should support multiple hospitals (tenants) using a shared backend with strict data isolation.
+
+Define detailed functionality, workflows, APIs, and database structure for the following modules:
+
+----------------------------------------
+1. Auth Module (Authentication & Authorization)
+----------------------------------------
+- User registration and login (JWT-based authentication)
+- Role-based access control (RBAC): Super Admin, Hospital Admin, Doctor, Staff
+- Multi-tenant login (user belongs to a specific hospital)
+- Password reset, email/OTP verification
+- Session management and token refresh
+- Audit logs for login activity
+- Permissions per role (fine-grained access)
+
+----------------------------------------
+2. Tenant (Hospital) Module
+----------------------------------------
+- Hospital registration (tenant onboarding)
+- Unique tenant ID generation
+- Hospital profile management (name, address, contact, departments)
+- Subscription plans (Basic, Premium, Enterprise)
+- Feature toggles per tenant
+- Tenant-specific settings (working hours, billing rules)
+- Data isolation strategy (shared DB + tenant_id)
+
+----------------------------------------
+3. Doctor Module
+----------------------------------------
+- Doctor profile management:
+  - Name, specialization, qualifications, experience
+  - Contact details and profile photo
+  - Department mapping (Cardiology, Orthopedics, etc.)
+- Unique doctor ID per tenant
+- Doctor onboarding (by hospital admin)
+- Role assignment (Doctor role in RBAC)
+- Availability & scheduling:
+  - Define working days and time slots
+  - Break times, leaves, and holidays
+  - Multiple location/branch support (if applicable)
+- Appointment linkage:
+  - View upcoming and past appointments
+  - Accept/reject/reschedule appointments
+- Patient interaction:
+  - Access assigned patient records (EMR)
+  - Add prescriptions and treatment notes
+  - Upload documents (lab results, reports)
+- Telemedicine support (optional):
+  - Video consultation integration
+  - Online consultation status tracking
+- Performance tracking:
+  - Number of consultations
+  - Ratings/feedback (optional)
+- Notifications:
+  - Alerts for new appointments, cancellations, reminders
+
+----------------------------------------
+4. Patient Module
+----------------------------------------
+- Patient registration (demographics, contact, medical history)
+- Unique patient ID generation per tenant
+- Patient search and filtering
+- Electronic Medical Records (EMR)
+- Visit history tracking
+- Document upload (reports, prescriptions)
+- Patient status (active/inactive)
+- Emergency contact details
+
+----------------------------------------
+5. Appointment Module
+----------------------------------------
+- Doctor scheduling (availability slots integration)
+- Appointment booking (online/offline)
+- Appointment status (scheduled, completed, cancelled)
+- Queue management system
+- Calendar integration (daily/weekly view)
+- Notifications (SMS/email reminders)
+- Walk-in patient handling
+- Doctor-wise and department-wise scheduling
+
+----------------------------------------
+6. Billing Module
+----------------------------------------
+- Invoice generation
+- Service-based billing (consultation, lab, pharmacy)
+- Tax calculation (GST support)
+- Payment modes (cash, card, UPI)
+- Payment status tracking (paid/unpaid/refund)
+- Insurance handling (optional)
+- Discount and coupon support
+- Billing history per patient
+
+----------------------------------------
+7. Reports Module
+----------------------------------------
+- Financial reports (daily/monthly revenue)
+- Patient reports (visits, demographics)
+- Appointment analytics (no-shows, peak hours)
+- Doctor performance reports
+- Export reports (PDF/Excel)
+- Dashboard with charts and KPIs
+- Audit logs and system usage reports
+
+
+
+----------------------------------------
+Deliverables:
+----------------------------------------
+1. Module-wise API endpoints (CRUD + advanced operations)
+2. Database schema (tables, relationships, ER diagram description)
+3. Folder structure (backend + frontend)
+4. Key workflows (step-by-step)
+5. Best practices for multi-tenancy and scalability
+
+
+Make the design practical, production-ready, and optimized for real hospital workflows.
+
+
+
+1. in Onboard New Doctor scrren, change Consultation Fee ($) dolor to rupee
