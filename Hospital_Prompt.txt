@@ -27,83 +27,130 @@ Define detailed functionality, workflows, APIs, and database structure for the f
 - Data isolation strategy (shared DB + tenant_id)
 
 ----------------------------------------
-3. Doctor Module
+3. Admin Module (Hospital Admin Control Panel)
+----------------------------------------
+- Admin dashboard:
+  - Overview of hospital operations (patients, doctors, revenue, appointments)
+  - Key KPIs and alerts
+
+- Doctor onboarding:
+  - Create doctor profiles
+  - Assign specialization and department
+  - Attach doctor to hospital (tenant)
+  - Enable/disable doctor accounts
+
+- Staff management:
+  - Add/edit/remove staff (receptionist, nurse, lab technician, etc.)
+  - Assign roles and responsibilities
+  - Staff profile management
+
+- Role & Permission Management (RBAC):
+  - Create custom roles (e.g., Receptionist, Billing Executive, Lab Staff)
+  - Assign permissions (module-level + action-level: create/read/update/delete)
+  - Role hierarchy and inheritance (optional)
+  - Map users to roles
+
+- User management:
+  - View all users (doctors + staff)
+  - Activate/deactivate accounts
+  - Reset passwords
+  - Track user activity logs
+
+- Department management:
+  - Create/manage departments (Cardiology, Neurology, etc.)
+  - Assign doctors to departments
+
+- Scheduling oversight:
+  - Manage doctor availability
+  - Override schedules if needed
+
+- Billing configuration:
+  - Define service charges (consultation fees, procedures)
+  - Configure tax (GST)
+  - Set pricing rules
+
+- Notifications & communication:
+  - Send announcements to doctors/staff
+  - System alerts and reminders
+
+- Audit & compliance:
+  - Track all admin actions (audit logs)
+  - Ensure compliance with hospital policies
+
+----------------------------------------
+4. Doctor Module
 ----------------------------------------
 - Doctor profile management:
   - Name, specialization, qualifications, experience
   - Contact details and profile photo
-  - Department mapping (Cardiology, Orthopedics, etc.)
+  - Department mapping
 - Unique doctor ID per tenant
-- Doctor onboarding (by hospital admin)
+- Doctor onboarding (by admin)
 - Role assignment (Doctor role in RBAC)
-- Availability & scheduling:
-  - Define working days and time slots
-  - Break times, leaves, and holidays
-  - Multiple location/branch support (if applicable)
-- Appointment linkage:
-  - View upcoming and past appointments
-  - Accept/reject/reschedule appointments
-- Patient interaction:
-  - Access assigned patient records (EMR)
-  - Add prescriptions and treatment notes
-  - Upload documents (lab results, reports)
-- Telemedicine support (optional):
-  - Video consultation integration
-  - Online consultation status tracking
-- Performance tracking:
-  - Number of consultations
-  - Ratings/feedback (optional)
-- Notifications:
-  - Alerts for new appointments, cancellations, reminders
+- Availability & scheduling
+- Appointment management (view, accept, reschedule)
+- Patient interaction (EMR access, prescriptions, notes)
+- Telemedicine support (optional)
+- Performance tracking
+- Notifications
 
 ----------------------------------------
-4. Patient Module
+5. Patient Module
 ----------------------------------------
-- Patient registration (demographics, contact, medical history)
-- Unique patient ID generation per tenant
+- Patient registration
+- Unique patient ID per tenant
 - Patient search and filtering
-- Electronic Medical Records (EMR)
-- Visit history tracking
-- Document upload (reports, prescriptions)
-- Patient status (active/inactive)
-- Emergency contact details
+- EMR (medical records)
+- Visit history
+- Document uploads
+- Patient status tracking
+- Emergency contacts
 
 ----------------------------------------
-5. Appointment Module
+6. Appointment Module
 ----------------------------------------
-- Doctor scheduling (availability slots integration)
+- Doctor scheduling integration
 - Appointment booking (online/offline)
-- Appointment status (scheduled, completed, cancelled)
-- Queue management system
-- Calendar integration (daily/weekly view)
-- Notifications (SMS/email reminders)
-- Walk-in patient handling
-- Doctor-wise and department-wise scheduling
+- Status tracking
+- Queue management
+- Calendar view
+- Notifications
+- Walk-in handling
 
 ----------------------------------------
-6. Billing Module
+7. Billing Module
 ----------------------------------------
 - Invoice generation
-- Service-based billing (consultation, lab, pharmacy)
-- Tax calculation (GST support)
-- Payment modes (cash, card, UPI)
-- Payment status tracking (paid/unpaid/refund)
-- Insurance handling (optional)
-- Discount and coupon support
-- Billing history per patient
+- Service-based billing
+- GST calculation
+- Payment modes (cash/card/UPI)
+- Payment tracking
+- Insurance support (optional)
+- Discounts/coupons
+- Billing history
 
 ----------------------------------------
-7. Reports Module
+8. Reports Module
 ----------------------------------------
-- Financial reports (daily/monthly revenue)
-- Patient reports (visits, demographics)
-- Appointment analytics (no-shows, peak hours)
+- Financial reports
+- Patient analytics
+- Appointment insights
 - Doctor performance reports
-- Export reports (PDF/Excel)
-- Dashboard with charts and KPIs
-- Audit logs and system usage reports
+- Export (PDF/Excel)
+- Dashboard analytics
+- Audit/system usage logs
 
-
+----------------------------------------
+Technical Requirements:
+----------------------------------------
+- Backend: NestJS (modular architecture)
+- Frontend: Next.js (modern SaaS UI)
+- Database: PostgreSQL (shared schema, tenant_id)
+- Authentication: JWT + refresh tokens
+- API Design: RESTful or GraphQL
+- Deployment: Docker + CI/CD
+- Security: Data isolation, encryption, validation
+- Scalability: Support 10–20 hospitals initially, scalable to 100+
 
 ----------------------------------------
 Deliverables:
@@ -113,10 +160,6 @@ Deliverables:
 3. Folder structure (backend + frontend)
 4. Key workflows (step-by-step)
 5. Best practices for multi-tenancy and scalability
-
+6. Optional: Microservices readiness design
 
 Make the design practical, production-ready, and optimized for real hospital workflows.
-
-
-
-1. in Onboard New Doctor scrren, change Consultation Fee ($) dolor to rupee
