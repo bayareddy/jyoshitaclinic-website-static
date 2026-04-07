@@ -60,7 +60,7 @@ export default function Navbar() {
             </ScrollLink>
           ))}
           <ScrollLink
-            to="contact"
+            to="book-appointment"
             smooth={true}
             duration={500}
             className="bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-sky-700 transition-all shadow-md hover:shadow-lg cursor-pointer"
@@ -102,7 +102,7 @@ export default function Navbar() {
                 </ScrollLink>
               ))}
               <ScrollLink
-                to="contact"
+                to="book-appointment"
                 smooth={true}
                 duration={500}
                 onClick={() => setIsOpen(false)}

@@ -30,7 +30,7 @@ export default function Hero() {
           
           <div className="flex flex-wrap gap-4">
             <ScrollLink
-              to="contact"
+              to="book-appointment"
               smooth={true}
               duration={500}
               className="bg-sky-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-sky-700 transition-all shadow-lg hover:shadow-sky-200 flex items-center gap-2 group cursor-pointer"

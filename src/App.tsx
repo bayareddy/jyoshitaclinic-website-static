@@ -8,6 +8,7 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
 import Doctors from './sections/Doctors';
+import BookAppointment from './sections/BookAppointment';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -20,6 +21,7 @@ export default function App() {
         <About />
         <Services />
         <Doctors />
+        <BookAppointment />
         <Contact />
       </main>
       <Footer />
