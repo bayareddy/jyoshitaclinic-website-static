@@ -1,7 +1,53 @@
 import { motion } from 'motion/react';
 import { Calendar, Clock, User, Phone, MessageSquare, Send, Stethoscope } from 'lucide-react';
+import React, { useState } from 'react';
 
 export default function BookAppointment() {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    phone_no: '',
+    doctor: '',
+    date: '',
+    time: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/book-appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+        setFormData({
+          first_name: '',
+          last_name: '',
+          phone_no: '',
+          doctor: '',
+          date: '',
+          time: '',
+        });
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to book appointment');
+    }
+  };
+
   return (
     <section id="book-appointment" className="py-24 bg-sky-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -50,7 +96,7 @@ export default function BookAppointment() {
             transition={{ duration: 0.8 }}
             className="bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-100"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
@@ -60,6 +106,10 @@ export default function BookAppointment() {
                     type="text"
                     placeholder="First name"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    name="first_name"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -70,6 +120,10 @@ export default function BookAppointment() {
                     type="text"
                     placeholder="Last name"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                    name="last_name"
+                    required
                   />
                 </div>
               </div>
@@ -83,6 +137,10 @@ export default function BookAppointment() {
                     type="tel"
                     placeholder="Your phone number"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
+                    value={formData.phone_no}
+                    onChange={handleChange}
+                    name="phone_no"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -92,6 +150,10 @@ export default function BookAppointment() {
                   <select
                     defaultValue=""
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white appearance-none"
+                    value={formData.doctor}
+                    onChange={handleChange}
+                    name="doctor"
+                    required
                   >
                     <option value="" disabled>Select a doctor</option>
                     <option value="Gali Himabindu">Dr. Gali Himabindu</option>
@@ -108,6 +170,10 @@ export default function BookAppointment() {
                   <input
                     type="date"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
+                    value={formData.date}
+                    onChange={handleChange}
+                    name="date"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -117,6 +183,10 @@ export default function BookAppointment() {
                   <input
                     type="time"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
+                    value={formData.time}
+                    onChange={handleChange}
+                    name="time"
+                    required
                   />
                 </div>
               </div>
