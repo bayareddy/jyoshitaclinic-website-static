@@ -232,7 +232,15 @@ export default function BookAppointment() {
                     type="tel"
                     required
                     value={formData.phoneNo}
-                    onChange={(e) => setFormData(prev => ({...prev, phoneNo: e.target.value}))}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '');
+                      if (val.length <= 10) {
+                        setFormData(prev => ({...prev, phoneNo: val}));
+                      }
+                    }}
+                    pattern="\d{10}"
+                    maxLength={10}
+                    title="Please enter exactly 10 digits"
                     placeholder="Your phone number"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white"
                   />

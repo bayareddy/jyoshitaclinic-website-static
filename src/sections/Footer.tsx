@@ -16,7 +16,7 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               Gentle care for growing smiles. Providing high-quality medical services with compassion and excellence in Bengaluru.
             </p>
-            <p className="text-sm font-medium text-sky-400">lokigoura@gmail.com</p>
+            <p className="text-sm font-medium text-sky-400">himabindhugali@gmail.com</p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-all">
                 <Facebook size={18} />
