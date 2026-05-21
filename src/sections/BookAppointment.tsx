@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, Clock, User, Phone, MessageSquare, Send, Stethoscope } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 interface Doctor {
   id: number;
@@ -50,7 +51,7 @@ export default function BookAppointment() {
 
   // 2. Fetch Doctors
   useEffect(() => {
-    fetch('/api/staff/doctors/active')
+    fetch(`${API_BASE_URL}/api/staff/doctors/active`)
       .then(res => res.json())
       .then((data: Doctor[]) => {
         setDoctors(data);
@@ -71,7 +72,7 @@ export default function BookAppointment() {
 
     const fetchSlots = async () => {
       try {
-        const res = await fetch(`/api/appointments/slots?doctorId=${formData.doctorId}&date=${selectedScheduleDate}`);
+        const res = await fetch(`${API_BASE_URL}/api/appointments/slots?doctorId=${formData.doctorId}&date=${selectedScheduleDate}`);
         if (!res.ok) {
            throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -130,7 +131,7 @@ export default function BookAppointment() {
       phone_no: formData.phoneNo,
     };
 
-    fetch('/api/appointments', {
+    fetch(`${API_BASE_URL}/api/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
