@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'https://admin-prod.jyoshitaclinic.com';
+export const API_BASE_URL = 'https://hms.jyoshitachildrensclinic.com';
