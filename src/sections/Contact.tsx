@@ -85,7 +85,7 @@ export default function Contact() {
 
             <div className="mt-12 rounded-3xl overflow-hidden h-64 shadow-inner border border-slate-100">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.24584210664!2d77.6614483!3d13.0199447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae111649999999%3A0x0!2zMTPCsDAxJzExLjgiTiA3N8KwMzknNDEuMiJF!5e0!3m2!1sen!2sin!4v1711685618097!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d77.6636411750764!3d13.026877787293504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1596b8e72625%3A0x5155809b37017182!2sJyoshita%20children's%20clinic!5e0!3m2!1sen!2sin!4v1716656041695!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
